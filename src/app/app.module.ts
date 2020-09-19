@@ -22,6 +22,11 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { CarsComponent } from './cars/cars.component';
+import { RepairsComponent } from './repairs/repairs.component';
+import { MatButtonModule } from '@angular/material/button';
+import { ClientsComponent } from './clients/clients.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -34,12 +39,16 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-
+    CarsComponent,
+    RepairsComponent,
+    ClientsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,12 +2,15 @@ import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
+import { ClientsComponent } from '../../clients/clients.component';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { RepairsComponent } from 'app/repairs/repairs.component';
+import { CarsComponent } from 'app/cars/cars.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -53,6 +56,9 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'dashboard',      component: DashboardComponent },
+    { path: 'clients',   component: ClientsComponent },
+    { path: 'cars',   component: CarsComponent },
+    { path: 'rapairs',   component: RepairsComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
