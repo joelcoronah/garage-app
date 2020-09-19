@@ -4,10 +4,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Clients</h4>
-                        <p class="card-category">List of clients</p>
+                        <h4 class="card-title ">Cars</h4>
+                        <p class="card-category">List of cars</p>
                         <button class="add-boton" mat-mini-fab color="primary"
-                            aria-label="Example icon button with a delete icon" (click)="openDialog()">
+                            aria-label="Example icon button with a delete icon">
                             <mat-icon>add</mat-icon>
                         </button>
                     </div>
@@ -19,42 +19,34 @@
                                         ID
                                     </th>
                                     <th>
-                                        Name
+                                        Plate
                                     </th>
                                     <th>
-                                        Lastname
+                                        Color
                                     </th>
                                     <th>
-                                        Identity document
+                                        Model
                                     </th>
                                     <th>
-                                        Phone
-                                    </th>
-                                    <th>
-                                        Actions
+                                        Brand
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let client of clients">
+                                    <tr *ngFor="let car of cars">
                                         <td>
-                                            {{ client.id }}
+                                            {{ car.id }}
                                         </td>
                                         <td>
-                                            {{ client.firstName }}
+                                            {{ car.plate }}
                                         </td>
                                         <td>
-                                            {{ client.lastName }}
+                                            {{ car.color }}
                                         </td>
                                         <td>
-                                            {{ client.identityDocument }}
+                                            {{ car.model }}
                                         </td>
                                         <td class="text-primary">
-                                            {{ client.telephone || 'Doesn\'t have' }}
-                                        </td>
-                                        <td class="text-primary">
-                                            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/clients', client.id, 'cars']">
-                                                directions_car
-                                            </mat-icon>
+                                            {{ car.brand }}
                                         </td>
                                     </tr>
                                 </tbody>

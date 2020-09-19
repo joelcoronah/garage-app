@@ -16,6 +16,10 @@ export class BaseServicesService {
   }
 
   save(data: any): Observable<any> {
-    return this._http.post(this._api, data)
+    return this._http.post(this._api, data);
+  }
+
+  getByField(field: string, value: any): Observable<any> {
+    return this._http.get(`${this._api}?${field}=${value}`);
   }
 }

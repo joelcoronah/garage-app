@@ -43,11 +43,9 @@ export class NewClientComponent implements OnInit {
   createClient() {
     this._clientService.save(this.formClient.value)
       .subscribe(res => {
-        console.log(res)
         this.openSnackBar('Client saved successfully', 'Success', 'success')
         this.dialogRef.close();
       }, error => {
-        console.log(error.error.message);
         this.openSnackBar(error.error.message, 'ERROR!', 'error')
       })
   }

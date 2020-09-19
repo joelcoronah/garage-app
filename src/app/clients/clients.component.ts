@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { IClient } from 'app/interfaces/client.interface';
 import { NewClientComponent } from 'app/new-client/new-client.component';
 import { ClientsService } from 'app/services/clients/clients.service';
@@ -15,10 +16,22 @@ export class ClientsComponent implements OnInit {
   clients: IClient[] = [];
   dialogRef: any;
 
-  constructor(private _clientServices: ClientsService, public dialog: MatDialog) { }
+  constructor(private _clientServices: ClientsService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.getClients();
+  }
+
+  openSnackBar(message: string, action: string, color: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'right',
+      panelClass: [color]
+    });
   }
 
   openDialog() {
@@ -35,11 +48,10 @@ export class ClientsComponent implements OnInit {
   getClients(): void {
     this._clientServices.getAll()
       .subscribe((data: IClient[]) => {
-        console.log(data)
         this.clients = data;
+        this.openSnackBar('Client listed successfully', 'Success', 'success')
       }, error => {
-        console.log(error);
+        this.openSnackBar('Can\'t list clients', 'ERROR!', 'error')
       })
   }
-
 }
