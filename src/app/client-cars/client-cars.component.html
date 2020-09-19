@@ -30,6 +30,9 @@
                                     <th>
                                         Brand
                                     </th>
+                                    <th>
+                                        Actions
+                                    </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let car of cars">
@@ -47,6 +50,11 @@
                                         </td>
                                         <td class="text-primary">
                                             {{ car.brand }}
+                                        </td>
+                                        <td class="text-primary">
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/cars', car.id, 'repairs']">
+                                                construction
+                                            </mat-icon>
                                         </td>
                                     </tr>
                                 </tbody>

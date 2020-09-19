@@ -15,119 +15,42 @@
                                         ID
                                     </th>
                                     <th>
-                                        Name
+                                        Plate
                                     </th>
                                     <th>
-                                        Lastname
+                                        Color
                                     </th>
                                     <th>
-                                        Identity document
+                                        Model
                                     </th>
                                     <th>
-                                        Phone
+                                        Brand
+                                    </th>
+                                    <th>
+                                        Actions
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let car of cars">
                                         <td>
-                                            1
+                                            {{ car.id }}
                                         </td>
                                         <td>
-                                            Dakota Rice
+                                            {{ car.plate }}
                                         </td>
                                         <td>
-                                            Niger
+                                            {{ car.color }}
                                         </td>
                                         <td>
-                                            Oud-Turnhout
+                                            {{ car.model }}
                                         </td>
                                         <td class="text-primary">
-                                            $36,738
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                            Minerva Hooper
-                                        </td>
-                                        <td>
-                                            Curaçao
-                                        </td>
-                                        <td>
-                                            Sinaai-Waas
+                                            {{ car.brand }}
                                         </td>
                                         <td class="text-primary">
-                                            $23,789
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                            Sage Rodriguez
-                                        </td>
-                                        <td>
-                                            Netherlands
-                                        </td>
-                                        <td>
-                                            Baileux
-                                        </td>
-                                        <td class="text-primary">
-                                            $56,142
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            4
-                                        </td>
-                                        <td>
-                                            Philip Chaney
-                                        </td>
-                                        <td>
-                                            Korea, South
-                                        </td>
-                                        <td>
-                                            Overland Park
-                                        </td>
-                                        <td class="text-primary">
-                                            $38,735
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            5
-                                        </td>
-                                        <td>
-                                            Doris Greene
-                                        </td>
-                                        <td>
-                                            Malawi
-                                        </td>
-                                        <td>
-                                            Feldkirchen in Kärnten
-                                        </td>
-                                        <td class="text-primary">
-                                            $63,542
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            6
-                                        </td>
-                                        <td>
-                                            Mason Porter
-                                        </td>
-                                        <td>
-                                            Chile
-                                        </td>
-                                        <td>
-                                            Gloucester
-                                        </td>
-                                        <td class="text-primary">
-                                            $78,615
+                                            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/cars', car.id, 'repairs']">
+                                                construction
+                                            </mat-icon>
                                         </td>
                                     </tr>
                                 </tbody>

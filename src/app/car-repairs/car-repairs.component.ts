@@ -7,11 +7,11 @@ import { NewRepairComponent } from 'app/new-repair/new-repair.component';
 import { RepairsService } from 'app/services/repairs/repairs.service';
 
 @Component({
-  selector: 'app-repairs',
-  templateUrl: './repairs.component.html',
-  styleUrls: ['./repairs.component.css']
+  selector: 'app-car-repairs',
+  templateUrl: './car-repairs.component.html',
+  styleUrls: ['./car-repairs.component.css']
 })
-export class RepairsComponent implements OnInit {
+export class CarRepairsComponent implements OnInit {
 
   repairs: IRepair[] = [];
   dialogRef: any;
@@ -49,13 +49,19 @@ export class RepairsComponent implements OnInit {
   }
 
   getRepairs(): void {
-    this._repairServices.getAll()
-      .subscribe((data: IRepair[]) => {
-        this.repairs = data;
-        this.openSnackBar('Repairs listed successfully', 'Success', 'success')
-      }, error => {
-        this.openSnackBar('Can\'t list Repairs', 'ERROR!', 'error')
-      })
+    this._route.params
+      .filter(params => params.id)
+      .subscribe(params => {
+        this.idCar = params.id;
+        this._repairServices.getRepairsByCar(params.id)
+        .subscribe((data: IRepair[]) => {
+          this.repairs = data;
+          this.openSnackBar('Repairs listed successfully', 'Success', 'success')
+        }, error => {
+          this.openSnackBar('Can\'t list Repairs', 'ERROR!', 'error')
+        })
+      }
+    );
   }
 
 }

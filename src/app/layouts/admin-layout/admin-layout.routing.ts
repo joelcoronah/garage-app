@@ -12,6 +12,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RepairsComponent } from 'app/repairs/repairs.component';
 import { CarsComponent } from 'app/cars/cars.component';
 import { ClientCarsComponent } from 'app/client-cars/client-cars.component';
+import { CarRepairsComponent } from 'app/car-repairs/car-repairs.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -60,6 +61,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'clients',   component: ClientsComponent },
     { path: 'cars',   component: CarsComponent },
     { path: 'clients/:id/cars',   component: ClientCarsComponent },
+    { path: 'cars/:id/repairs',   component: CarRepairsComponent },
     { path: 'rapairs',   component: RepairsComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
