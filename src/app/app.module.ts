@@ -27,6 +27,12 @@ import { RepairsComponent } from './repairs/repairs.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ClientsComponent } from './clients/clients.component';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NewClientComponent } from './new-client/new-client.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -41,14 +47,20 @@ import { MatIconModule } from '@angular/material/icon';
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     CarsComponent,
     RepairsComponent,
-    ClientsComponent
+    ClientsComponent,
+    NewClientComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

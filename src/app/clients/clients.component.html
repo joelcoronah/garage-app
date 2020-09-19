@@ -6,11 +6,8 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Clients</h4>
                         <p class="card-category">List of clients</p>
-                        <button
-                            class="add-boton"
-                            mat-mini-fab color="primary"
-                            aria-label="Example icon button with a delete icon"
-                        >
+                        <button class="add-boton" mat-mini-fab color="primary"
+                            aria-label="Example icon button with a delete icon" (click)="openDialog()">
                             <mat-icon>add</mat-icon>
                         </button>
                     </div>
@@ -35,106 +32,21 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let client of clients">
                                         <td>
-                                            1
+                                            {{ client.id }}
                                         </td>
                                         <td>
-                                            Dakota Rice
+                                            {{ client.firstName }}
                                         </td>
                                         <td>
-                                            Niger
+                                            {{ client.lastName }}
                                         </td>
                                         <td>
-                                            Oud-Turnhout
+                                            {{ client.identityDocument }}
                                         </td>
                                         <td class="text-primary">
-                                            $36,738
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                            Minerva Hooper
-                                        </td>
-                                        <td>
-                                            Curaçao
-                                        </td>
-                                        <td>
-                                            Sinaai-Waas
-                                        </td>
-                                        <td class="text-primary">
-                                            $23,789
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                            Sage Rodriguez
-                                        </td>
-                                        <td>
-                                            Netherlands
-                                        </td>
-                                        <td>
-                                            Baileux
-                                        </td>
-                                        <td class="text-primary">
-                                            $56,142
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            4
-                                        </td>
-                                        <td>
-                                            Philip Chaney
-                                        </td>
-                                        <td>
-                                            Korea, South
-                                        </td>
-                                        <td>
-                                            Overland Park
-                                        </td>
-                                        <td class="text-primary">
-                                            $38,735
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            5
-                                        </td>
-                                        <td>
-                                            Doris Greene
-                                        </td>
-                                        <td>
-                                            Malawi
-                                        </td>
-                                        <td>
-                                            Feldkirchen in Kärnten
-                                        </td>
-                                        <td class="text-primary">
-                                            $63,542
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            6
-                                        </td>
-                                        <td>
-                                            Mason Porter
-                                        </td>
-                                        <td>
-                                            Chile
-                                        </td>
-                                        <td>
-                                            Gloucester
-                                        </td>
-                                        <td class="text-primary">
-                                            $78,615
+                                            {{ client.telephone || 'Doesn\'t have' }}
                                         </td>
                                     </tr>
                                 </tbody>
