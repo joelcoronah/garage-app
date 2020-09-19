@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClientsService } from 'app/services/clients/clients.service';
-import { Output, EventEmitter } from '@angular/core';
-import { MatSnackBar, MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-client',
@@ -12,8 +11,6 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./new-client.component.css']
 })
 export class NewClientComponent implements OnInit {
-
-  @Output() refreshClientList = new EventEmitter<string>();
 
   formClient = new FormGroup({
     firstName: new FormControl('', [Validators.maxLength(50), Validators.required]),

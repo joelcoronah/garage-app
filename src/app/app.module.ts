@@ -34,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ClientCarsComponent } from './client-cars/client-cars.component';
+import { NewCarComponent } from './new-car/new-car.component';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { ClientCarsComponent } from './client-cars/client-cars.component';
     ClientsComponent,
     NewClientComponent,
     ClientCarsComponent,
+    NewCarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
