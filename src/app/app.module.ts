@@ -31,6 +31,9 @@ import { CarRepairsComponent } from './car-repairs/car-repairs.component';
 import { NewRepairComponent } from './new-repair/new-repair.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [
@@ -52,7 +55,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatAutocompleteModule
   ],
   declarations: [
     AppComponent,

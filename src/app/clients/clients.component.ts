@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IClient } from 'app/interfaces/client.interface';
@@ -6,6 +6,8 @@ import { NewClientComponent } from 'app/new-client/new-client.component';
 import { ClientsService } from 'app/services/clients/clients.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerService } from 'app/services/spinner.services';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-clients',
@@ -13,6 +15,12 @@ import { SpinnerService } from 'app/services/spinner.services';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
+
+  displayedColumns: string[] = ['id', 'firstName', 'lastName',
+        'identityDocument', 'telephone', 'actions'];
+  dataSource: any;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   clients: IClient[] = [];
   dialogRef: any;
@@ -49,10 +57,15 @@ export class ClientsComponent implements OnInit {
   }
 
   getClients(): void {
+
     this.showSpinner = true
     this._clientServices.getAll()
       .subscribe((data: IClient[]) => {
         this.clients = data;
+
+        this.dataSource = new MatTableDataSource<IClient>(data);
+        this.dataSource.paginator = this.paginator;
+
         this.openSnackBar('Client listed successfully', 'Success', 'success')
         setTimeout(() => {
           this.showSpinner = false

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { IRepair } from 'app/interfaces/repair.interface';
 import { NewRepairComponent } from 'app/new-repair/new-repair.component';
@@ -12,6 +14,11 @@ import { RepairsService } from 'app/services/repairs/repairs.service';
   styleUrls: ['./car-repairs.component.css']
 })
 export class CarRepairsComponent implements OnInit {
+
+  displayedColumns: string[] = ['id', 'name', 'description', 'creationDate'];
+  dataSource: any;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   repairs: IRepair[] = [];
   dialogRef: any;
@@ -56,20 +63,24 @@ export class CarRepairsComponent implements OnInit {
       .subscribe(params => {
         this.idCar = params.id;
         this._repairServices.getRepairsByCar(params.id)
-        .subscribe((data: IRepair[]) => {
-          this.repairs = data;
-          this.openSnackBar('Repairs listed successfully', 'Success', 'success')
-          setTimeout(() => {
-            this.showSpinner = false
-          }, 1000);
-        }, error => {
-          this.openSnackBar('Can\'t list Repairs', 'ERROR!', 'error')
-          setTimeout(() => {
-            this.showSpinner = false
-          }, 1000);
-        })
+          .subscribe((data: IRepair[]) => {
+            this.repairs = data;
+
+            this.dataSource = new MatTableDataSource<IRepair>(data);
+            this.dataSource.paginator = this.paginator;
+
+            this.openSnackBar('Repairs listed successfully', 'Success', 'success')
+            setTimeout(() => {
+              this.showSpinner = false
+            }, 1000);
+          }, error => {
+            this.openSnackBar('Can\'t list Repairs', 'ERROR!', 'error')
+            setTimeout(() => {
+              this.showSpinner = false
+            }, 1000);
+          })
       }
-    );
+      );
   }
 
 }

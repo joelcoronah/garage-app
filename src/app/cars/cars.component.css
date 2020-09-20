@@ -3,12 +3,15 @@
     right: 5%;
     top: 25%;
 }
+
 ::ng-deep .info {
     background-color: #2196F3;
 }
+
 ::ng-deep .success {
     background-color: #04b85e;
 }
+
 ::ng-deep .error {
     background-color: #B00020;
 }
@@ -16,6 +19,7 @@
 ::ng-deep .mat-simple-snackbar-action {
     color: white;
 }
+
 /* Absolute Center Spinner */
 .loading-indicator {
     position: fixed;
@@ -34,7 +38,7 @@
     .loading-indicator {
         right: 15%;
     }
-  }
+}
 
 /* Transparent Overlay */
 .loading-indicator:before {
@@ -46,4 +50,25 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-header-cell {
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom-width: 1px;
+    color: #9c27b0 !important;
+}
+
+@media screen and (max-width: 960px) {
+    th.mat-header-cell {
+        padding-right: 15px;
+    }
+
+    td.mat-cell {
+        padding-right: 15px;
+    }
 }

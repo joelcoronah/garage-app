@@ -10,6 +10,7 @@
                         <h4 class="card-title ">Cars</h4>
                         <p class="card-category">List of cars</p>
                         <button class="add-boton" mat-mini-fab color="primary"
+                            matTooltip="Add car"
                             aria-label="Example icon button with a delete icon" (click)="openDialog()">
                             <mat-icon style="cursor: pointer;">add</mat-icon>
                         </button>
@@ -55,7 +56,7 @@
                                             {{ car.brand }}
                                         </td>
                                         <td class="text-primary">
-                                            <mat-icon matTooltip="Show repairs" style="cursor: pointer;" aria-hidden="false" aria-label="Example home icon" [routerLink]="['/cars', car.id, 'repairs']">
+                                            <mat-icon matTooltip="Show repairs" style="cursor: pointer; color: #9c27b0" aria-hidden="false" aria-label="Example home icon" [routerLink]="['/cars', car.id, 'repairs']">
                                                 construction
                                             </mat-icon>
                                         </td>

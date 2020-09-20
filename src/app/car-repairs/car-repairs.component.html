@@ -9,41 +9,44 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Repairs</h4>
                         <p class="card-category">List of repairs</p>
+                        <button class="add-boton" mat-mini-fab color="primary"
+                            matTooltip="Add car repair"
+                            aria-label="Example icon button with a delete icon" (click)="openDialog()">
+                            <mat-icon style="cursor: pointer;">add</mat-icon>
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Description
-                                    </th>
-                                    <th>
-                                        Date
-                                    </th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let repair of repairs">
-                                        <td>
-                                            {{ repair.id }}
-                                        </td>
-                                        <td>
-                                            {{ repair.name }}
-                                        </td>
-                                        <td>
-                                            {{ repair.description }}
-                                        </td>
-                                        <td>
-                                            {{ repair.creationDate }}
-                                        </td>
-                                    </tr>
-                                </tbody>
+                            <table mat-table [dataSource]="dataSource">
+
+                                <!-- Id Column -->
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                                    <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                                </ng-container>
+
+                                <!-- Description Column -->
+                                <ng-container matColumnDef="description">
+                                    <th mat-header-cell *matHeaderCellDef> Description </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                                </ng-container>
+
+                                <!-- repair date Column -->
+                                <ng-container matColumnDef="creationDate">
+                                    <th mat-header-cell *matHeaderCellDef> Rapair Date </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.creationDate | date: 'medium'}}</td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
                         </div>
                     </div>
                 </div>
