@@ -4,7 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { IClient } from 'app/interfaces/client.interface';
 import { NewClientComponent } from 'app/new-client/new-client.component';
 import { ClientsService } from 'app/services/clients/clients.service';
-import { Observable } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerService } from 'app/services/spinner.services';
 
 @Component({
   selector: 'app-clients',
@@ -15,10 +16,12 @@ export class ClientsComponent implements OnInit {
 
   clients: IClient[] = [];
   dialogRef: any;
+  showSpinner = false;
 
   constructor(private _clientServices: ClientsService,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private spinnerService: SpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -46,12 +49,19 @@ export class ClientsComponent implements OnInit {
   }
 
   getClients(): void {
+    this.showSpinner = true
     this._clientServices.getAll()
       .subscribe((data: IClient[]) => {
         this.clients = data;
         this.openSnackBar('Client listed successfully', 'Success', 'success')
+        setTimeout(() => {
+          this.showSpinner = false
+        }, 1000);
       }, error => {
         this.openSnackBar('Can\'t list clients', 'ERROR!', 'error')
+        setTimeout(() => {
+          this.showSpinner = false
+        }, 1000);
       })
   }
 }

@@ -57,17 +57,9 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'dashboard',      component: DashboardComponent },
     { path: 'clients',   component: ClientsComponent },
     { path: 'cars',   component: CarsComponent },
     { path: 'clients/:id/cars',   component: ClientCarsComponent },
     { path: 'cars/:id/repairs',   component: CarRepairsComponent },
     { path: 'rapairs',   component: RepairsComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
 ];

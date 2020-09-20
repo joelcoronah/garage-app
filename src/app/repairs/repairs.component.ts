@@ -16,6 +16,7 @@ export class RepairsComponent implements OnInit {
   repairs: IRepair[] = [];
   dialogRef: any;
   idCar: number;
+  showSpinner = false;
 
   constructor(private _repairServices: RepairsService,
     public dialog: MatDialog,
@@ -49,12 +50,20 @@ export class RepairsComponent implements OnInit {
   }
 
   getRepairs(): void {
+    this.showSpinner = true;
+
     this._repairServices.getAll()
       .subscribe((data: IRepair[]) => {
         this.repairs = data;
         this.openSnackBar('Repairs listed successfully', 'Success', 'success')
+        setTimeout(() => {
+          this.showSpinner = false
+        }, 1000);
       }, error => {
         this.openSnackBar('Can\'t list Repairs', 'ERROR!', 'error')
+        setTimeout(() => {
+          this.showSpinner = false
+        }, 1000);
       })
   }
 

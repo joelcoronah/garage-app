@@ -1,3 +1,6 @@
+<div class="loading-indicator" *ngIf="showSpinner">
+    <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
+</div>
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -6,10 +9,6 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Repairs</h4>
                         <p class="card-category">List of repairs</p>
-                        <button class="add-boton" mat-mini-fab color="primary"
-                            aria-label="Example icon button with a delete icon" (click)="openDialog()">
-                            <mat-icon>add</mat-icon>
-                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -27,9 +26,6 @@
                                     <th>
                                         Date
                                     </th>
-                                    <th>
-                                        Actions
-                                    </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let repair of repairs">
@@ -44,11 +40,6 @@
                                         </td>
                                         <td>
                                             {{ repair.creationDate }}
-                                        </td>
-                                        <td class="text-primary">
-                                            <mat-icon aria-hidden="false" aria-label="Example home icon" [routerLink]="['/cars', repair.id, 'repairs']">
-                                                construction
-                                            </mat-icon>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -16,6 +16,7 @@ export class CarsComponent implements OnInit {
   cars: ICar[] = [];
   dialogRef: any;
   idClient: number;
+  showSpinner = false;
 
   constructor(private _carServices: CarsService,
     public dialog: MatDialog,
@@ -49,12 +50,20 @@ export class CarsComponent implements OnInit {
   }
 
   getCars(): void {
+    this.showSpinner = true
+
     this._carServices.getAll()
         .subscribe((data: ICar[]) => {
           this.cars = data;
           this.openSnackBar('Cars listed successfully', 'Success', 'success')
+          setTimeout(() => {
+            this.showSpinner = false
+          }, 1000);
         }, error => {
           this.openSnackBar('Can\'t list Cars', 'ERROR!', 'error')
+          setTimeout(() => {
+            this.showSpinner = false
+          }, 1000);
         })
   }
 
