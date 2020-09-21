@@ -1,5 +1,6 @@
 # Garage APP
 Garage APP is an interface designed for managing car repairs, customer list, car and repair lists.
+You can check a [demo](http://garage.codenity.net/)
 
 ## Table of Contents
 
