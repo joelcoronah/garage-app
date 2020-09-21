@@ -27,7 +27,7 @@ If you have questions or need help integrating the app please [contact me](http:
 
 ## Licensing
 
-- Copyright 2018 Creative Tim (https://www.creative-tim.com/)
+- Copyright 2018 Joel Corona (http://joelcoronah.github.io/)
 
 - Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-angular2/blob/master/LICENSE.md)
 
