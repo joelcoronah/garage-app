@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { ICar } from 'app/interfaces/car.interface';
 import { NewCarComponent } from 'app/new-car/new-car.component';
@@ -12,6 +14,11 @@ import { CarsService } from 'app/services/cars/cars.service';
   styleUrls: ['./client-cars.component.css']
 })
 export class ClientCarsComponent implements OnInit {
+
+  displayedColumns: string[] = ['id', 'plate', 'model', 'brand', 'color', 'actions'];
+  dataSource: any;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   cars: ICar[] = [];
   dialogRef: any;
@@ -59,6 +66,10 @@ export class ClientCarsComponent implements OnInit {
         this._carServices.getCarsByClient(params.id)
         .subscribe((data: ICar[]) => {
           this.cars = data;
+
+          this.dataSource = new MatTableDataSource<ICar>(data);
+          this.dataSource.paginator = this.paginator;
+
           this.openSnackBar('Cars listed successfully', 'Success', 'success')
           setTimeout(() => {
             this.showSpinner = false
