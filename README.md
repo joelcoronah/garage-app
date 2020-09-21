@@ -3,7 +3,6 @@ Garage APP is an interface designed for managing car repairs, customer list, car
 
 ## Table of Contents
 
-* [Quick Start](#quick-start)
 * [Technical Support or Questions](#technical-support-or-questions)
 * [Licensing](#licensing)
 
